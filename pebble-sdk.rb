@@ -2,9 +2,9 @@ require 'formula'
 
 class PebbleSdk < Formula
   homepage 'https://developer.getpebble.com'
-  url 'http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/PebbleSDK-3.0-dp1.tar.gz'
-  sha1 'd59b8089d8a9410a32c03f59d5feee1ab6965b24'
-  version '3.0-dp1'
+  url 'http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/PebbleSDK-3.0-dp7.tar.gz'
+  sha1 '08eb4cc1d4bd3a9822946cfca34907b4a2664f25'
+  version '3.0-dp7'
 
   depends_on :macos => :mountain_lion
   depends_on 'freetype' => :recommended
@@ -46,6 +46,16 @@ class PebbleSdk < Formula
     sha1 '3821c58be15e833fc183dd361df02dece32ba180'
   end
 
+  resource 'oauth2client' do
+    url 'https://pypi.python.org/packages/source/o/oauth2client/oauth2client-1.3.tar.gz'
+    sha1 '02c69758754be96c902225f3e55965cd5a392064'
+  end
+
+  resource 'backports.ssl_match_hostname' do
+    url 'https://pypi.python.org/packages/source/b/backports.ssl_match_hostname/backports.ssl_match_hostname-3.4.0.2.tar.gz'
+    sha1 'da4e41f3b110279d2382df47ac1e4f10c63cf954'
+  end
+
   resource 'gevent' do
     url 'https://pypi.python.org/packages/source/g/gevent/gevent-1.0.1.tar.gz'
     sha1 '2cc1b6e1fa29b30ea881fa6a195e57faaf089ae8'
@@ -61,9 +71,19 @@ class PebbleSdk < Formula
     sha1 '97f18d651595bd30243ad2f4702764791e57fa6e'
   end
 
+  resource 'peewee' do
+    url 'https://pypi.python.org/packages/source/p/peewee/peewee-2.4.7.tar.gz'
+    sha1 '7803726847e109a3f56b456a092b04937ef3b6d2'
+  end
+
   resource 'pygeoip' do
     url 'https://pypi.python.org/packages/source/p/pygeoip/pygeoip-0.3.2.tar.gz'
     sha1 '608365dc820b54ac44d368e6e33766444e0a5098'
+  end
+
+  resource 'python-dateutil' do
+    url 'https://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-2.4.1.post1.tar.gz'
+    sha1 '55c712dac45ad14532d9bc05b64ba7e4bf6b56c6'
   end
 
   resource 'requests' do
@@ -105,10 +125,14 @@ class PebbleSdk < Formula
     resource('websocket-client').stage { system "python", *install_args }
     resource('pyserial').stage { system "python", *install_args }
     resource('pypng').stage { system "python", *install_args }
+    resource('oauth2client').stage { system "python", *install_args }
+    resource('backports.ssl_match_hostname').stage { system "python", *install_args }
     resource('gevent').stage { system "python", *install_args }
     resource('gevent-websocket').stage { system "python", *install_args }
     resource('greenlet').stage { system "python", *install_args }
+    resource('peewee').stage { system "python", *install_args }
     resource('pygeoip').stage { system "python", *install_args }
+    resource('python-dateutil').stage { system "python", *install_args }
     resource('requests').stage { system "python", *install_args }
     resource('six').stage { system "python", *install_args }
     resource('wsgiref').stage { system "python", *install_args }
