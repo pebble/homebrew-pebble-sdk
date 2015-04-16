@@ -2,9 +2,9 @@ require 'formula'
 
 class PebbleSdk < Formula
   homepage 'https://developer.getpebble.com'
-  url 'http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/PebbleSDK-3.0-dp7.tar.gz'
-  sha1 '08eb4cc1d4bd3a9822946cfca34907b4a2664f25'
-  version '3.0-dp7'
+  url 'http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/PebbleSDK-3.0-dp8.tar.gz'
+  sha1 '710522892ab81aa08f4f4f7c84f7a003b387d7c6'
+  version '3.0-dp8'
 
   depends_on :macos => :mountain_lion
   depends_on 'freetype' => :recommended
@@ -118,25 +118,13 @@ class PebbleSdk < Formula
     ENV.prepend_create_path 'PYTHONPATH', libexec+'lib/python2.7/site-packages'
     install_args = [ "setup.py", "install", "--prefix=#{libexec}" ]
 
-    resource('freetype-py').stage { system "python", *install_args }
-    resource('sh').stage { system "python", *install_args }
-    resource('twisted').stage { system "python", *install_args }
-    resource('autobahn').stage { system "python", *install_args }
-    resource('websocket-client').stage { system "python", *install_args }
-    resource('pyserial').stage { system "python", *install_args }
-    resource('pypng').stage { system "python", *install_args }
-    resource('oauth2client').stage { system "python", *install_args }
-    resource('backports.ssl_match_hostname').stage { system "python", *install_args }
-    resource('gevent').stage { system "python", *install_args }
-    resource('gevent-websocket').stage { system "python", *install_args }
-    resource('greenlet').stage { system "python", *install_args }
-    resource('peewee').stage { system "python", *install_args }
-    resource('pygeoip').stage { system "python", *install_args }
-    resource('python-dateutil').stage { system "python", *install_args }
-    resource('requests').stage { system "python", *install_args }
-    resource('six').stage { system "python", *install_args }
-    resource('wsgiref').stage { system "python", *install_args }
-
+    %w[freetype-py sh twisted autobahn websocket-client pyserial pypng oauth2client
+       backports.ssl_match_hostname gevent gevent-websocket freenlet peewee pygeoip
+       python-dateutil requests six wsgiref].each do |r|
+      resource(r).stage do
+        system "python", *install_args
+      end
+    
     doc.install %w[Documentation Examples README.txt]
     prefix.install %w[Pebble bin tools requirements.txt version.txt]
 
