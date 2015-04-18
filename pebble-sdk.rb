@@ -3,12 +3,15 @@ require 'formula'
 class PebbleSdk < Formula
   homepage 'https://developer.getpebble.com'
   url 'http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/PebbleSDK-3.0-dp8.tar.gz'
-  sha1 '710522892ab81aa08f4f4f7c84f7a003b387d7c6'
+  sha256 '6d3644bec91f0f9af0adbdbee5ce595d1772e47d2b6e52b45cbc45ea75048cce'
   version '3.0-dp8'
 
-  depends_on :macos => :mountain_lion
   depends_on 'freetype' => :recommended
-  depends_on 'pebble-toolchain' => :build
+
+  depends_on 'pebble-toolchain'
+  depends_on 'boost-python'
+  depends_on 'glib'
+  depends_on 'pixman'
 
   # List of resources can be obtained from requirements.txt
   resource 'freetype-py' do
