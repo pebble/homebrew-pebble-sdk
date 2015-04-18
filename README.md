@@ -11,8 +11,8 @@ brew install pebble-sdk
 ```
 
 ## Major Contributors
-[Adrian Petrescu](https://github.com/apetresc),
-[Alessio Bogon](https://github.com/youtux),
-[Jack Nagel](https://github.com/jacknagel),
-[Mike McQuaid](https://github.com/mikemcquaid),
-[Mike Naberezny](https://github.com/mnaberez)
+* [Adrian Petrescu](https://github.com/apetresc)  
+* [Alessio Bogon](https://github.com/youtux)  
+* [Jack Nagel](https://github.com/jacknagel)  
+* [Mike McQuaid](https://github.com/mikemcquaid)  
+* [Mike Naberezny](https://github.com/mnaberez)
