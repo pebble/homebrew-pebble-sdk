@@ -122,12 +122,11 @@ class PebbleSdk < Formula
     install_args = [ "setup.py", "install", "--prefix=#{libexec}" ]
 
     %w[freetype-py sh twisted autobahn websocket-client pyserial pypng oauth2client
-       backports.ssl_match_hostname gevent gevent-websocket freenlet peewee pygeoip
+       backports.ssl_match_hostname gevent gevent-websocket greenlet peewee pygeoip
        python-dateutil requests six wsgiref].each do |r|
-      resource(r).stage do
-        system "python", *install_args
-      end
-    
+      resource(r).stage { system "python", *install_args }
+    end
+
     doc.install %w[Documentation Examples README.txt]
     prefix.install %w[Pebble bin tools requirements.txt version.txt]
 
