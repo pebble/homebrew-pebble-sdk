@@ -9,6 +9,13 @@ It was made possible by the contributors listed below as well as the devoted Peb
 brew tap pebble/pebble-sdk
 brew install pebble-sdk
 ```
+  
+The legacy (2.9) version of the SDK is also supported:
+```sh
+brew tap pebble/pebble-sdk
+brew install pebble-sdk-legacy
+```
+
 
 ## Major Contributors
 * [Adrian Petrescu](https://github.com/apetresc)  
