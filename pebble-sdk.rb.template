@@ -1,0 +1,110 @@
+require 'curses'
+
+class PebbleSdk < Formula
+  class Version < ::Version
+    def <=> (other)
+      mine = ::Version.new(self.to_s.sub('dp', 'alpha'))
+      other = ::Version.new(other.to_s.sub('dp', 'alpha'))
+      mine <=> other
+    end
+  end
+  
+  INSERT_REQUIREMENTS
+  INSERT_VERSION
+  INSERT_HASH
+
+  homepage 'https://developer.getpebble.com'
+  url "http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/PebbleSDK-#{PEBBLE_SDK_VERSION}.tar.gz"
+  sha256 "#{PEBBLE_SDK_SHA256}"
+  version PebbleSdk::Version.new("#{PEBBLE_SDK_VERSION}")
+
+  depends_on 'freetype' => :recommended
+
+  depends_on 'pebble-toolchain'
+  depends_on 'boost-python'
+  depends_on 'glib'
+  depends_on 'pixman'
+
+  PEBBLE_SDK_REQUIREMENTS.each do |r|
+    resource r["name"] do
+      url r["url"]
+      sha256 r["hash"]
+    end
+  end
+
+  def cancel_install
+    Curses.close_screen
+    puts "To use the Pebble SDK, you must agree to the Pebble Terms of Use and Pebble Developer License."
+    puts "Cancelling installation of Pebble SDK..."
+  end
+
+  def check_license_agreement
+    Curses.noecho
+    Curses.init_screen    
+    
+    Curses.addstr("To use the Pebble SDK, you must agree to the following:\n\nPEBBLE TERMS OF USE\nhttps://developer.getpebble.com/legal/terms-of-use\n\nPEBBLE DEVELOPER LICENSE\nhttps://developer.getpebble.com/legal/sdk-license\n\nDo you accept the Pebble Terms of Use and the Pebble Developer License (y/n)? ")
+
+    loop do
+      case Curses.getch
+        when 'y'
+          break
+        when 'n'
+          cancel_install
+          exit
+      end
+    end
+
+    Curses.close_screen
+  end
+
+  def install
+    check_license_agreement
+    inreplace 'bin/pebble' do |s|
+      # This replacement fixes a path that gets messed up because of the
+      # bin.env_script_all_files call (which relocates actual pebble.py script
+      # to libexec/, causing problems with the absolute path expected below).
+      s.gsub! /^script_path = .*?$/m, "script_path = '#{libexec}/../tools/pebble.py'"
+
+      # This replacement removes environment settings that were needed only
+      # if installation was done with the official script
+      s.gsub! /^local_python_env.*?=.*?\(.*?\)$/m, ""
+      s.gsub! /^process = subprocess\.Popen\(args, shell=False, env=local_python_env\)/, "process = subprocess.Popen(args, shell=False)"
+    end
+
+    ENV["PYTHONPATH"] = lib+"python2.7/site-packages"
+    ENV.prepend_create_path 'PYTHONPATH', libexec+'lib/python2.7/site-packages'
+    ENV.prepend_create_path "PATH", libexec/"bin"
+    install_args = [ "setup.py", "install", "--prefix=#{libexec}" ]
+
+    PEBBLE_SDK_REQUIREMENTS.each do |r|
+      resource(r["name"]).stage { system "python", *install_args }
+    end
+    
+    doc.install %w[Documentation Examples README.txt]
+    prefix.install %w[Pebble bin tools requirements.txt version.txt]
+
+    ln_s "#{HOMEBREW_PREFIX}/Cellar/pebble-toolchain/2.0/arm-cs-tools", "#{prefix}"
+
+    bin.env_script_all_files(libexec+'bin', :PYTHONPATH => ENV['PYTHONPATH'])
+  end
+
+  test do
+    system bin/'pebble', 'new-project', 'test'
+    cd 'test' do
+      # We have to remove the default /usr/local/include from the CPATH
+      # because the toolchain has -Werror=poison-system-directories set
+      ENV['CPATH'] = ''
+      system bin/'pebble', 'build'
+    end
+  end
+
+  def caveats; <<-EOS.undent
+      
+      Documentation can be found online at https://developer.getpebble.com/docs or in
+      #{doc}
+
+      Examples can be found online at https://github.com/pebble-examples
+
+    EOS
+  end
+end
