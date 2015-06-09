@@ -14,7 +14,7 @@ class PebbleSdk < Formula
   PEBBLE_SDK_SHA256='2441a712af16d59f1f3d3375094d03a83da75ca32bf7a7d28d2e423c6d457092'
 
   homepage 'https://developer.getpebble.com'
-  url "https://sdk.getpebble.com/download/#{PEBBLE_SDK_VERSION}/?source=homebrew"
+  url "https://sdk.getpebble.com/download/#{PEBBLE_SDK_VERSION}?source=homebrew"
   sha256 "#{PEBBLE_SDK_SHA256}"
   version PebbleSdk::Version.new("#{PEBBLE_SDK_VERSION}")
 
