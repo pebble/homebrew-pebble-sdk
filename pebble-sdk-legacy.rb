@@ -7,7 +7,7 @@ class PebbleSdkLegacy < Formula
   PEBBLE_SDK_SHA256='9eb9dee08c88f192a6403717d8b32d67f49e598efb1b6e530056f008c5a2f465'
 
   homepage 'https://developer.getpebble.com'
-  url "http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/PebbleSDK-#{PEBBLE_SDK_VERSION}.tar.gz"
+  url "https://sdk.getpebble.com/download/#{PEBBLE_SDK_VERSION}?source=homebrew-legacy"
   sha256 "#{PEBBLE_SDK_SHA256}"
   version "#{PEBBLE_SDK_VERSION}"
 

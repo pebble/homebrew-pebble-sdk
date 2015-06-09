@@ -14,7 +14,7 @@ class PebbleSdk < Formula
   INSERT_HASH
 
   homepage 'https://developer.getpebble.com'
-  url "http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/PebbleSDK-#{PEBBLE_SDK_VERSION}.tar.gz"
+  url "https://sdk.getpebble.com/download/#{PEBBLE_SDK_VERSION}?source=homebrew"
   sha256 "#{PEBBLE_SDK_SHA256}"
   version PebbleSdk::Version.new("#{PEBBLE_SDK_VERSION}")
 
