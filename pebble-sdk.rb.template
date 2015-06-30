@@ -8,15 +8,11 @@ class PebbleSdk < Formula
       mine <=> other
     end
   end
-  
-  INSERT_REQUIREMENTS
-  INSERT_VERSION
-  INSERT_HASH
 
   homepage 'https://developer.getpebble.com'
-  url "https://sdk.getpebble.com/download/#{PEBBLE_SDK_VERSION}?source=homebrew"
-  sha256 "#{PEBBLE_SDK_SHA256}"
-  version PebbleSdk::Version.new("#{PEBBLE_SDK_VERSION}")
+  url "https://sdk.getpebble.com/download/__PEBBLE_SDK_VERSION__?source=homebrew"
+  sha256 "__PEBBLE_SDK_SHA256__"
+  version PebbleSdk::Version.new("__PEBBLE_SDK_VERSION__")
 
   depends_on 'freetype' => :recommended
 
@@ -25,12 +21,7 @@ class PebbleSdk < Formula
   depends_on 'glib'
   depends_on 'pixman'
 
-  PEBBLE_SDK_REQUIREMENTS.each do |r|
-    resource r["name"] do
-      url r["url"]
-      sha256 r["hash"]
-    end
-  end
+  __PEBBLE_SDK_REQUIREMENTS__
 
   def cancel_install
     Curses.close_screen
@@ -76,8 +67,8 @@ class PebbleSdk < Formula
     ENV.prepend_create_path "PATH", libexec/"bin"
     install_args = [ "setup.py", "install", "--prefix=#{libexec}" ]
 
-    PEBBLE_SDK_REQUIREMENTS.each do |r|
-      resource(r["name"]).stage { system "python", *install_args }
+    %w[__PEBBLE_SDK_REQUIREMENTS_LIST__].each do |r|
+      resource(r).stage { system "python", *install_args }
     end
     
     doc.install %w[Documentation Examples README.txt]
