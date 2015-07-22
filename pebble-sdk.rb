@@ -10,9 +10,9 @@ class PebbleSdk < Formula
   end
 
   homepage 'https://developer.getpebble.com'
-  url "https://sdk.getpebble.com/download/3.1?source=homebrew"
-  sha256 "9030d4d33368110369cbc364971bacb450bbb1f289319cfbd498ef918ad4da30"
-  version PebbleSdk::Version.new("3.1")
+  url "https://sdk.getpebble.com/download/3.2?source=homebrew"
+  sha256 "4cf0d0c6906fb4fc49f10f5a001dae743115ffa2263d8abc61445c8992e5090b"
+  version PebbleSdk::Version.new("3.2")
 
   depends_on 'freetype' => :recommended
 
@@ -21,14 +21,19 @@ class PebbleSdk < Formula
   depends_on 'glib'
   depends_on 'pixman'
 
-  resource 'autobahn' do
-    url 'https://pypi.python.org/packages/source/a/autobahn/autobahn-0.5.14.zip'
-    sha256 'd56979d4dffae6dc4d9c840629b9a8092ac41ea75f55052d70943edf7e01979d'
-  end
-
   resource 'backports.ssl-match-hostname' do
     url 'https://pypi.python.org/packages/source/b/backports.ssl_match_hostname/backports.ssl_match_hostname-3.4.0.2.tar.gz'
     sha256 '07410e7fb09aab7bdaf5e618de66c3dac84e2e3d628352814dc4c37de321d6ae'
+  end
+
+  resource 'colorama' do
+    url 'https://pypi.python.org/packages/source/c/colorama/colorama-0.3.3.tar.gz'
+    sha256 'eb21f2ba718fbf357afdfdf6f641ab393901c7ca8d9f37edd0bee4806ffa269c'
+  end
+
+  resource 'enum34' do
+    url 'https://pypi.python.org/packages/source/e/enum34/enum34-1.0.4.tar.gz'
+    sha256 'd3c19f26a6a34629c18c775f59dfc5dd595764c722b57a2da56ebfb69b94e447'
   end
 
   resource 'freetype-py' do
@@ -51,14 +56,39 @@ class PebbleSdk < Formula
     sha256 'f32c4fa4e06443e1bdb0d32b69e7617c25ff772c3ffc6d0aa63d192e9fd795fe'
   end
 
+  resource 'httplib2' do
+    url 'https://pypi.python.org/packages/source/h/httplib2/httplib2-0.9.1.tar.gz'
+    sha256 'bc6339919a5235b9d1aaee011ca5464184098f0c47c9098001f91c97176583f5'
+  end
+
+  resource 'libpebble2' do
+    url 'https://pypi.python.org/packages/source/l/libpebble2/libpebble2-0.0.7.tar.gz'
+    sha256 'd55d8e0df722f1594db0f10169b85023d27e89288ba07205dfbe2ca6bd77f5fd'
+  end
+
   resource 'oauth2client' do
-    url 'https://pypi.python.org/packages/source/o/oauth2client/oauth2client-1.3.tar.gz'
-    sha256 '668ffe5a9a6df1f5fca50a851da9ce97286dc10f190b05e84763a8cd9716141b'
+    url 'https://pypi.python.org/packages/source/o/oauth2client/oauth2client-1.4.11.tar.gz'
+    sha256 'dcc9bfaa544791206ca86a2f311872f0c4c1e81b068775c3da16abe72a506873'
   end
 
   resource 'peewee' do
     url 'https://pypi.python.org/packages/source/p/peewee/peewee-2.4.7.tar.gz'
     sha256 '8ad1c4fb202332a969da83a0af712bca96ed6e2a70ca1523ab3d2a2234ed47bd'
+  end
+
+  resource 'progressbar2' do
+    url 'https://pypi.python.org/packages/source/p/progressbar2/progressbar2-2.7.3.tar.gz'
+    sha256 '8366ffc752ebe3c8e50db2699b7b1dc3cb6ff3750065e965a2591ac50270b794'
+  end
+
+  resource 'pyasn1' do
+    url 'https://pypi.python.org/packages/source/p/pyasn1/pyasn1-0.1.7.tar.gz'
+    sha256 'e4f81d53c533f6bd9526b047f047f7b101c24ab17339c1a7ad8f98b25c101eab'
+  end
+
+  resource 'pyasn1-modules' do
+    url 'https://pypi.python.org/packages/source/p/pyasn1-modules/pyasn1-modules-0.0.5.tar.gz'
+    sha256 'be65f00ed28e30756f1ef39377cb382480a2368699179d646a84d79fe9349941'
   end
 
   resource 'pygeoip' do
@@ -72,8 +102,8 @@ class PebbleSdk < Formula
   end
 
   resource 'pyserial' do
-    url 'https://pypi.python.org/packages/source/p/pyserial/pyserial-2.6.tar.gz'
-    sha256 '049dbcda0cd475d3be903e721d60889ee2cc4ec3b62892a81ecef144196413ed'
+    url 'https://pypi.python.org/packages/source/p/pyserial/pyserial-2.7.tar.gz'
+    sha256 '3542ec0838793e61d6224e27ff05e8ce4ba5a5c5cc4ec5c6a3e8d49247985477'
   end
 
   resource 'python-dateutil' do
@@ -86,24 +116,29 @@ class PebbleSdk < Formula
     sha256 '398a3db6d61899d25fd4a06c6ca12051b0ce171d705decd7ed5511517b4bb93d'
   end
 
+  resource 'rsa' do
+    url 'https://pypi.python.org/packages/source/r/rsa/rsa-3.1.4.tar.gz'
+    sha256 'e2b0b05936c276b1edd2e1525553233b666df9e29b5c3ba223eed738277c82a0'
+  end
+
   resource 'sh' do
     url 'https://pypi.python.org/packages/source/s/sh/sh-1.09.tar.gz'
     sha256 'f3d174e2ad25c39f28935bae672be51aa083063d3122405ceeb2a3e7a8239d45'
   end
 
   resource 'six' do
-    url 'https://pypi.python.org/packages/source/s/six/six-1.8.0.tar.gz'
-    sha256 '047bbbba41bac37c444c75ddfdf0573dd6e2f1fbd824e6247bb26fa7d8fa3830'
-  end
-
-  resource 'twisted' do
-    url 'https://pypi.python.org/packages/source/T/Twisted/Twisted-12.0.0.tar.bz2'
-    sha256 'e5561c9714583fd052ea9e0b10331609a719b3878f9d2593e4c57eab0ba0effd'
+    url 'https://pypi.python.org/packages/source/s/six/six-1.9.0.tar.gz'
+    sha256 'e24052411fc4fbd1f672635537c3fc2330d9481b18c0317695b46259512c91d5'
   end
 
   resource 'websocket-client' do
-    url 'https://pypi.python.org/packages/source/w/websocket-client/websocket-client-0.22.0.tar.gz'
-    sha256 '83a173ea32ef4209a1933b3e0f5bfafe533b909073ff8d657f044b5792b8c7b5'
+    url 'https://pypi.python.org/packages/source/w/websocket-client/websocket_client-0.32.0.tar.gz'
+    sha256 'cb3ab95617ed2098d24723e3ad04ed06c4fde661400b96daa1859af965bfe040'
+  end
+
+  resource 'wheel' do
+    url 'https://pypi.python.org/packages/source/w/wheel/wheel-0.24.0.tar.gz'
+    sha256 'ef832abfedea7ed86b6eae7400128f88053a1da81a37c00613b1279544d585aa'
   end
 
   resource 'wsgiref' do
@@ -155,7 +190,7 @@ class PebbleSdk < Formula
     ENV.prepend_create_path "PATH", libexec/"bin"
     install_args = [ "setup.py", "install", "--prefix=#{libexec}" ]
 
-    %w[autobahn backports.ssl-match-hostname freetype-py gevent gevent-websocket greenlet oauth2client peewee pygeoip pypng pyserial python-dateutil requests sh six twisted websocket-client wsgiref].each do |r|
+    %w[backports.ssl-match-hostname colorama enum34 freetype-py gevent gevent-websocket greenlet httplib2 libpebble2 oauth2client peewee progressbar2 pyasn1 pyasn1-modules pygeoip pypng pyserial python-dateutil requests rsa sh six websocket-client wheel wsgiref].each do |r|
       resource(r).stage { system "python", *install_args }
     end
     
