@@ -177,7 +177,7 @@ class PebbleSdk < Formula
       # This replacement fixes a path that gets messed up because of the
       # bin.env_script_all_files call (which relocates actual pebble.py script
       # to libexec/, causing problems with the absolute path expected below).
-      s.gsub! /^script_path = .*?$/m, "script_path = '#{libexec}/../tools/pebble.py'"
+      s.gsub! /^script_path = .*?$/m, "script_path = '#{libexec}/../pebble-tool/pebble.py'"
 
       # This replacement removes environment settings that were needed only
       # if installation was done with the official script
@@ -195,7 +195,7 @@ class PebbleSdk < Formula
     end
     
     doc.install %w[Documentation Examples README.txt]
-    prefix.install %w[Pebble bin tools requirements.txt version.txt]
+    prefix.install %w[Pebble bin pebble-tool requirements.txt version.txt]
 
     ln_s "#{HOMEBREW_PREFIX}/Cellar/pebble-toolchain/2.0/arm-cs-tools", "#{prefix}"
 
