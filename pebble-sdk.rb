@@ -67,8 +67,8 @@ class PebbleSdk < Formula
   end
 
   resource 'oauth2client' do
-    url 'https://pypi.python.org/packages/source/o/oauth2client/oauth2client-1.4.11.tar.gz'
-    sha256 'dcc9bfaa544791206ca86a2f311872f0c4c1e81b068775c3da16abe72a506873'
+    url 'https://pypi.python.org/packages/source/o/oauth2client/oauth2client-1.4.12.tar.gz'
+    sha256 '74aa6c3beb90a4a7b9b8d0bc3cd60db34d45c5ee6136187bb9eabe85b4990e5e'
   end
 
   resource 'peewee' do
