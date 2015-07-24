@@ -82,13 +82,13 @@ class PebbleSdk < Formula
   end
 
   resource 'pyasn1' do
-    url 'https://pypi.python.org/packages/source/p/pyasn1/pyasn1-0.1.7.tar.gz'
-    sha256 'e4f81d53c533f6bd9526b047f047f7b101c24ab17339c1a7ad8f98b25c101eab'
+    url 'https://pypi.python.org/packages/source/p/pyasn1/pyasn1-0.1.8.tar.gz'
+    sha256 '5d33be7ca0ec5997d76d29ea4c33b65c00c0231407fff975199d7f40530b8347'
   end
 
   resource 'pyasn1-modules' do
-    url 'https://pypi.python.org/packages/source/p/pyasn1-modules/pyasn1-modules-0.0.5.tar.gz'
-    sha256 'be65f00ed28e30756f1ef39377cb382480a2368699179d646a84d79fe9349941'
+    url 'https://pypi.python.org/packages/source/p/pyasn1-modules/pyasn1-modules-0.0.6.tar.gz'
+    sha256 '1f41d3f3da43e9a769e23649724368aa0b88afcfd1fe6e9f210d31d13322fc15'
   end
 
   resource 'pygeoip' do
@@ -190,7 +190,7 @@ class PebbleSdk < Formula
     ENV.prepend_create_path "PATH", libexec/"bin"
     install_args = [ "setup.py", "install", "--prefix=#{libexec}" ]
 
-    %w[backports.ssl-match-hostname colorama enum34 freetype-py gevent gevent-websocket greenlet httplib2 libpebble2 oauth2client peewee progressbar2 pyasn1 pyasn1-modules pygeoip pypng pyserial python-dateutil requests rsa sh six websocket-client wheel wsgiref].each do |r|
+    %w[backports.ssl-match-hostname colorama enum34 freetype-py gevent gevent-websocket greenlet httplib2 libpebble2 pyasn1 pyasn1-modules oauth2client peewee progressbar2 pygeoip pypng pyserial python-dateutil requests rsa sh six websocket-client wheel wsgiref].each do |r|
       resource(r).stage { system "python", *install_args }
     end
     
