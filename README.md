@@ -16,6 +16,9 @@ brew tap pebble/pebble-sdk
 brew install pebble-sdk-legacy
 ```
 
+## Bug Reports
+
+Please report bugs using [GitHub Issues](https://github.com/pebble/homebrew-pebble-sdk/issues). Be sure to include any relevant error messages, along with the output of the ```brew config``` and ```brew doctor``` commands.
 
 ## Major Contributors
 * [Adrian Petrescu](https://github.com/apetresc)  
