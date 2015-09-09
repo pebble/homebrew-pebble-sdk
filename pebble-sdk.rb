@@ -10,9 +10,9 @@ class PebbleSdk < Formula
   end
 
   homepage 'https://developer.getpebble.com'
-  url "https://sdk.getpebble.com/download/3.3?source=homebrew"
-  sha256 "e1cf8f9b3d374e1f9229df3d4b1e3f2f13833d52882237d874d8346b4cb7af23"
-  version PebbleSdk::Version.new("3.3")
+  url "https://sdk.getpebble.com/download/3.4?source=homebrew"
+  sha256 "0ee3cf7bd5a44901e9859a16319f5fa91a9a6807283b17549df00c63f5caf405"
+  version PebbleSdk::Version.new("3.4")
 
   depends_on 'freetype' => :recommended
 
@@ -99,6 +99,11 @@ class PebbleSdk < Formula
   resource 'pypng' do
     url 'https://pypi.python.org/packages/source/p/pypng/pypng-0.0.17.tar.gz'
     sha256 '2dfa74ac28a4c41ae61e62d243410548c7c174bd990528d30270324f15211544'
+  end
+
+  resource 'pyqrcode' do
+    url 'https://pypi.python.org/packages/source/P/PyQRCode/PyQRCode-1.1.tar.gz'
+    sha256 'a22814bf88c8632ebe496e3300793c12471bb448d3186032445990c44ddcdd51'
   end
 
   resource 'pyserial' do
@@ -190,7 +195,7 @@ class PebbleSdk < Formula
     ENV.prepend_create_path "PATH", libexec/"bin"
     install_args = [ "setup.py", "install", "--prefix=#{libexec}" ]
 
-    %w[backports.ssl-match-hostname colorama enum34 freetype-py gevent gevent-websocket greenlet httplib2 libpebble2 pyasn1 pyasn1-modules oauth2client peewee progressbar2 pygeoip pypng pyserial python-dateutil requests rsa sh six websocket-client wheel wsgiref].each do |r|
+    %w[backports.ssl-match-hostname colorama enum34 freetype-py gevent gevent-websocket greenlet httplib2 libpebble2 pyasn1 pyasn1-modules oauth2client peewee progressbar2 pygeoip pypng pyqrcode pyserial python-dateutil requests rsa sh six websocket-client wheel wsgiref].each do |r|
       resource(r).stage { system "python", *install_args }
     end
     
