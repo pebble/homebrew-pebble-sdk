@@ -42,8 +42,8 @@ class PebbleSdk < Formula
   end
 
   resource 'gevent' do
-    url 'https://pypi.python.org/packages/source/g/gevent/gevent-1.0.2.tar.gz'
-    sha256 '3ae1ca0f533ddcb17aab16ce66b424b3f3b855ff3b9508526915d3c6b73fba31'
+    url 'https://pypi.python.org/packages/source/g/gevent/gevent-1.1b1.tar.gz'
+    sha256 'b21f67b55dcb2555a72cbbc1cb8d926c7a262e39dc323831a5935d6b1f1bc716'
   end
 
   resource 'gevent-websocket' do
