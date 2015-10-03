@@ -10,9 +10,9 @@ class PebbleSdk < Formula
   end
 
   homepage 'https://developer.getpebble.com'
-  url "https://sdk.getpebble.com/download/3.6-dp2?source=homebrew"
-  sha256 "b6aeb80d48ee1b8632c9cb7f74fa12aee3b787a3b9425220b6132a0d4deb7e73"
-  version PebbleSdk::Version.new("3.6-dp2")
+  url "https://sdk.getpebble.com/download/3.4?source=homebrew"
+  sha256 "0ee3cf7bd5a44901e9859a16319f5fa91a9a6807283b17549df00c63f5caf405"
+  version PebbleSdk::Version.new("3.4")
 
   depends_on 'freetype' => :recommended
 
@@ -62,8 +62,8 @@ class PebbleSdk < Formula
   end
 
   resource 'libpebble2' do
-    url 'https://pypi.python.org/packages/source/l/libpebble2/libpebble2-0.0.9.tar.gz'
-    sha256 '91336242d4fe7a340917fe47ccb2d4690ea5bd52c4bedad4b6a103b4a23ccd1b'
+    url 'https://pypi.python.org/packages/source/l/libpebble2/libpebble2-0.0.8.tar.gz'
+    sha256 'b5bc40fa028a1a3d67f36a8790e46ef0a7ecd4fc85d8c04f972cdf3f0092a920'
   end
 
   resource 'oauth2client' do
