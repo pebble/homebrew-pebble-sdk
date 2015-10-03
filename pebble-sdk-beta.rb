@@ -11,7 +11,7 @@ class PebbleSdkBeta < Formula
 
   homepage 'https://developer.getpebble.com'
   url "https://sdk.getpebble.com/download/3.6-dp5?source=homebrew"
-  sha256 "e328b17c0705c372735e4e20a8e2eea24325f424399c23ea0870ad1522784aec"
+  sha256 "bc7e20dee97ec8c58a2a65a8ad2f9f60b60cc71521a9d83abd1bd15b4fc85b62"
   version PebbleSdkBeta::Version.new("3.6-dp5")
 
   depends_on 'freetype' => :recommended
