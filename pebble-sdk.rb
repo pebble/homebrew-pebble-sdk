@@ -10,9 +10,9 @@ class PebbleSdk < Formula
   end
 
   homepage 'https://developer.getpebble.com'
-  url "https://sdk.getpebble.com/download/3.6.2?source=homebrew"
-  sha256 "4dc0d5310d44425deda3b4614c8036e17070de8d1cea07dd253bce18d474bac5"
-  version PebbleSdk::Version.new("3.6.2")
+  url "https://sdk.getpebble.com/download/3.7?source=homebrew"
+  sha256 "794f85f0e0f892ae938651ded91b1da544cb0835226f97b38a66233b2f93a2c7"
+  version PebbleSdk::Version.new("3.7")
 
   depends_on 'freetype' => :recommended
 
