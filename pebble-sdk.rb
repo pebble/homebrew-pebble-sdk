@@ -173,7 +173,12 @@ class PebbleSdk < Formula
     system "python", *Language::Python.setup_install_args(libexec)
 
     bin.install Dir[libexec/"bin/*"]
-    bin.env_script_all_files(libexec/"bin", :PYTHONPATH => ENV["PYTHONPATH"], :PHONESIM_PATH => libexec/"pypkjs/phonesim.py")
+    bin.env_script_all_files(
+      libexec/"bin",
+      :PYTHONPATH => ENV["PYTHONPATH"],
+      :PHONESIM_PATH => libexec/"pypkjs/phonesim.py",
+      :PEBBLE_TOOLCHAIN_PATH => HOMEBREW_PREFIX/"Cellar/pebble-toolchain/2.0/arm-cs-tools/bin",
+    )
   end
 
   test do
