@@ -2,6 +2,7 @@ class PebbleQemu < Formula
   homepage "https://github.com/pebble/qemu"
   url "https://github.com/pebble/qemu/archive/v2.1.1-pebble1.zip"
   sha256 "a7b1047492ab969725d90efa42a95ac22e69b271c7847a1a19606b3ea226f025"
+  head "https://github.com/pebble/qemu.git"
   version "2.1.1-pebble1"
 
   bottle do
@@ -30,7 +31,9 @@ class PebbleQemu < Formula
                           "--disable-mouse"
 
     system "make"
+    # We only need the one binary.
     bin.install ["arm-softmmu/qemu-system-arm"]
-    mv bin/"qemu-system-arm", bin/"qemu-pebble"
+    # Rename it to avoid conflicting with more standard QEMUs.
+    mv bin/"qemu-system-arm", bin/"pebble-qemu"
   end
 end

@@ -1,5 +1,3 @@
-require 'curses'
-
 class PebbleSdk < Formula
   class Version < ::Version
     def <=> (other)
@@ -10,16 +8,22 @@ class PebbleSdk < Formula
   end
 
   homepage 'https://developer.getpebble.com'
-  url "https://sdk.getpebble.com/download/3.6?source=homebrew"
-  sha256 "5e25620486a2f4ff600436ab4e9f71a4e23d4d4bc2d8fa73844d75c8344719f7"
-  version PebbleSdk::Version.new("3.6")
+  # url "https://sdk.getpebble.com/download/3.6?source=homebrew"
+  # sha256 "5e25620486a2f4ff600436ab4e9f71a4e23d4d4bc2d8fa73844d75c8344719f7"
+  # version PebbleSdk::Version.new("4.0")
+  head 'https://github.com/pebble/pebble-tool.git', :branch => "feature/multiple-sdks"
 
   depends_on 'freetype' => :recommended
+  depends_on 'boost-python'
 
   depends_on 'pebble-toolchain'
-  depends_on 'boost-python'
-  depends_on 'glib'
-  depends_on 'pixman'
+  depends_on 'pebble-qemu'
+
+  depends_on :python if MacOS.version <= :snow_leopard
+
+  resource 'pypkjs' do
+    url 'https://github.com/pebble/pypkjs.git', :branch => "3.x-on-tintin"
+  end
 
   resource 'backports.ssl-match-hostname' do
     url 'https://pypi.python.org/packages/source/b/backports.ssl_match_hostname/backports.ssl_match_hostname-3.4.0.2.tar.gz'
@@ -62,8 +66,8 @@ class PebbleSdk < Formula
   end
 
   resource 'libpebble2' do
-    url 'https://pypi.python.org/packages/source/l/libpebble2/libpebble2-0.0.12.tar.gz'
-    sha256 '3ada5d0cb611569b8c92dae38cf224ffef4633be427359f0b478bc8b7d5afb97'
+    url 'https://pypi.python.org/packages/source/l/libpebble2/libpebble2-0.0.14.tar.gz'
+    sha256 '575bc910dc1c7b7feb70891ef754782fd3c31ebfb0c4b91177bf41cc72b81ece'
   end
 
   resource 'oauth2client' do
@@ -151,60 +155,25 @@ class PebbleSdk < Formula
     sha256 'c7e610c800957046c04c8014aab8cce8f0b9f0495c8cd349e57c1f7cabf40e79'
   end
 
-  def cancel_install
-    Curses.close_screen
-    puts "To use the Pebble SDK, you must agree to the Pebble Terms of Use and Pebble Developer License."
-    puts "Cancelling installation of Pebble SDK..."
-  end
-
-  def check_license_agreement
-    Curses.noecho
-    Curses.init_screen    
-    
-    Curses.addstr("To use the Pebble SDK, you must agree to the following:\n\nPEBBLE TERMS OF USE\nhttps://developer.getpebble.com/legal/terms-of-use\n\nPEBBLE DEVELOPER LICENSE\nhttps://developer.getpebble.com/legal/sdk-license\n\nDo you accept the Pebble Terms of Use and the Pebble Developer License (y/n)? ")
-
-    loop do
-      case Curses.getch
-        when 'y'
-          break
-        when 'n'
-          cancel_install
-          exit
-      end
-    end
-
-    Curses.close_screen
+  resource 'netaddr' do
+    url 'https://pypi.python.org/packages/source/n/netaddr/netaddr-0.7.18.zip'
+    sha256 'c64c570ac612e20e8b8a6eee72034c924fff9d76c7a46f50a9f919085f1bfbed'
   end
 
   def install
-    check_license_agreement
-    inreplace 'bin/pebble' do |s|
-      # This replacement fixes a path that gets messed up because of the
-      # bin.env_script_all_files call (which relocates actual pebble.py script
-      # to libexec/, causing problems with the absolute path expected below).
-      s.gsub! /^script_path = .*?$/m, "script_path = '#{libexec}/../pebble-tool/pebble.py'"
+    ENV.prepend_create_path "PYTHONPATH", libexec/"lib/python2.7/site-packages"
+    ENV.prepend_create_path "PYTHONPATH", libexec/"vendor/lib/python2.7/site-packages"
 
-      # This replacement removes environment settings that were needed only
-      # if installation was done with the official script
-      s.gsub! /^local_python_env.*?=.*?\(.*?\)$/m, ""
-      s.gsub! /^process = subprocess\.Popen\(args, shell=False, env=local_python_env\)/, "process = subprocess.Popen(args, shell=False)"
+    resource('pypkjs').stage { (libexec/"pypkjs").install Dir["*"] }
+
+    %w[backports.ssl-match-hostname colorama enum34 freetype-py gevent gevent-websocket greenlet httplib2 libpebble2 pyasn1 pyasn1-modules oauth2client peewee progressbar2 pygeoip pypng pyqrcode pyserial python-dateutil requests rsa sh six websocket-client wheel wsgiref netaddr].each do |r|
+      resource(r).stage { system "python", *Language::Python.setup_install_args(libexec/"vendor") }
     end
 
-    ENV["PYTHONPATH"] = lib+"python2.7/site-packages"
-    ENV.prepend_create_path 'PYTHONPATH', libexec+'lib/python2.7/site-packages'
-    ENV.prepend_create_path "PATH", libexec/"bin"
-    install_args = [ "setup.py", "install", "--prefix=#{libexec}" ]
+    system "python", *Language::Python.setup_install_args(libexec)
 
-    %w[backports.ssl-match-hostname colorama enum34 freetype-py gevent gevent-websocket greenlet httplib2 libpebble2 pyasn1 pyasn1-modules oauth2client peewee progressbar2 pygeoip pypng pyqrcode pyserial python-dateutil requests rsa sh six websocket-client wheel wsgiref].each do |r|
-      resource(r).stage { system "python", *install_args }
-    end
-    
-    doc.install %w[Documentation Examples README.txt]
-    prefix.install %w[Pebble bin pebble-tool requirements.txt version.txt]
-
-    ln_s "#{HOMEBREW_PREFIX}/Cellar/pebble-toolchain/2.0/arm-cs-tools", "#{prefix}"
-
-    bin.env_script_all_files(libexec+'bin', :PYTHONPATH => ENV['PYTHONPATH'])
+    bin.install Dir[libexec/"bin/*"]
+    bin.env_script_all_files(libexec/"bin", :PYTHONPATH => ENV["PYTHONPATH"], :PHONESIM_PATH => libexec/"pypkjs/phonesim.py")
   end
 
   test do
