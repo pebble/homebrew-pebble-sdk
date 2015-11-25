@@ -4,6 +4,7 @@ class PebbleQemu < Formula
   sha256 "a7b1047492ab969725d90efa42a95ac22e69b271c7847a1a19606b3ea226f025"
   head "https://github.com/pebble/qemu.git"
   version "2.1.1-pebble1"
+  revision 1
 
   bottle do
     root_url "http://pebble-sdk-homebrew.s3.amazonaws.com"
@@ -34,6 +35,6 @@ class PebbleQemu < Formula
     # We only need the one binary.
     bin.install ["arm-softmmu/qemu-system-arm"]
     # Rename it to avoid conflicting with more standard QEMUs.
-    mv bin/"qemu-system-arm", bin/"pebble-qemu"
+    mv bin/"qemu-system-arm", bin/"qemu-pebble"
   end
 end
