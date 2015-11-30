@@ -377,6 +377,7 @@ class PebbleSdk < Formula
         :PYTHONPATH => ENV["PYTHONPATH"],
         :PHONESIM_PATH => libexec/"pypkjs/phonesim.py",
         :PEBBLE_TOOLCHAIN_PATH => HOMEBREW_PREFIX/"Cellar/pebble-toolchain/2.0/arm-cs-tools/bin",
+        :PEBBLE_IS_HOMEBREW => "1",
       )
     end
   end
