@@ -1,8 +1,8 @@
 class PebbleSdk < Formula
   class Version < ::Version
     def <=> (other)
-      mine = ::Version.new(self.to_s.sub('dp', 'alpha'))
-      other = ::Version.new(other.to_s.sub('dp', 'alpha'))
+      mine = ::Version.new(self.to_s.sub('dp', 'alpha').to_s.sub('rc', 'beta'))
+      other = ::Version.new(other.to_s.sub('dp', 'alpha').to_s.sub('rc', 'beta'))
       mine <=> other
     end
   end
