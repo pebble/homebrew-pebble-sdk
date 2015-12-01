@@ -8,6 +8,7 @@ class PebbleSdk < Formula
   end
 
   homepage 'https://developer.getpebble.com'
+  revision 1
   stable do
     url "https://sdk.getpebble.com/download/3.7?source=homebrew"
     sha256 "794f85f0e0f892ae938651ded91b1da544cb0835226f97b38a66233b2f93a2c7"
