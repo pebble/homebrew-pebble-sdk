@@ -302,6 +302,11 @@ class PebbleSdk < Formula
       url 'https://pypi.python.org/packages/source/n/netaddr/netaddr-0.7.18.zip'
       sha256 'c64c570ac612e20e8b8a6eee72034c924fff9d76c7a46f50a9f919085f1bfbed'
     end
+
+    resource 'virtualenv' do
+      url 'https://pypi.python.org/packages/source/v/virtualenv/virtualenv-13.1.2.tar.gz'
+      sha256 'aabc8ef18cddbd8a2a9c7f92bc43e2fea54b1147330d65db920ef3ce9812e3dc'
+    end
   end
 
   def cancel_install
@@ -366,7 +371,7 @@ class PebbleSdk < Formula
 
       resource('pypkjs').stage { (libexec/"pypkjs").install Dir["*"] }
 
-      %w[backports.ssl-match-hostname colorama enum34 freetype-py gevent gevent-websocket greenlet httplib2 libpebble2 pyasn1 pyasn1-modules oauth2client peewee progressbar2 pygeoip pypng pyqrcode pyserial python-dateutil requests rsa sh six websocket-client wheel wsgiref netaddr].each do |r|
+      %w[backports.ssl-match-hostname colorama enum34 freetype-py gevent gevent-websocket greenlet httplib2 libpebble2 pyasn1 pyasn1-modules oauth2client peewee progressbar2 pygeoip pypng pyqrcode pyserial python-dateutil requests rsa sh six websocket-client wheel wsgiref netaddr virtualenv].each do |r|
         resource(r).stage { system "python", *Language::Python.setup_install_args(libexec/"vendor") }
       end
 
