@@ -153,9 +153,9 @@ class PebbleSdk < Formula
   end
 
   devel do
-    version PebbleSdk::Version.new("4.0-rc1")
-    url 'https://github.com/pebble/pebble-tool/archive/v4.0-rc1.zip'
-    sha256 '0e234c31f7f8e15ea21d1b94773414e7b29dca59123111fa3c9a9bf80c83cdaf'
+    version PebbleSdk::Version.new("4.0-rc2")
+    url 'https://github.com/pebble/pebble-tool/archive/v4.0-rc2.zip'
+    sha256 '8e73a12b5a335c523521f17571481d03a94c2ac4e50d697243a2f9c442aff509'
 
     depends_on 'freetype' => :recommended
     depends_on 'boost-python'
