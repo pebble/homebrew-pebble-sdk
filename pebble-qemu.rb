@@ -9,7 +9,9 @@ class PebbleQemu < Formula
   bottle do
     root_url "http://pebble-sdk-homebrew.s3.amazonaws.com"
     cellar :any
+    revision 1
     sha256 "b55b5940b9439c4ee0cb1484e7209d28d527d2d1e3dcb1e82a2ee5212d01a702" => :el_capitan
+    sha256 "258bff04da3487a0dbdc0f0f22b1ad0e99261ae6d76150e7a7d114268a64b0e7" => :yosemite
   end
 
   depends_on "pkg-config" => :build
