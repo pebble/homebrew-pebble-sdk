@@ -8,7 +8,6 @@ class PebbleSdk < Formula
   end
 
   homepage 'https://developer.getpebble.com'
-  revision 1
   stable do
     url "https://sdk.getpebble.com/download/3.7?source=homebrew"
     sha256 "794f85f0e0f892ae938651ded91b1da544cb0835226f97b38a66233b2f93a2c7"
@@ -153,9 +152,9 @@ class PebbleSdk < Formula
   end
 
   devel do
-    version PebbleSdk::Version.new("4.0-rc2")
-    url 'https://github.com/pebble/pebble-tool/archive/v4.0-rc2.zip'
-    sha256 '8e73a12b5a335c523521f17571481d03a94c2ac4e50d697243a2f9c442aff509'
+    version PebbleSdk::Version.new("4.0-rc3")
+    url 'https://github.com/pebble/pebble-tool/archive/v4.0-rc3.zip'
+    sha256 'a7da65a2a6a0755b1a471a8e6a4bf66e59c6b562b9db0632696c40e86eaebf97'
 
     depends_on 'freetype' => :recommended
     depends_on 'boost-python'
