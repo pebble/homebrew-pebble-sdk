@@ -152,9 +152,9 @@ class PebbleSdk < Formula
   end
 
   devel do
-    version PebbleSdk::Version.new("4.0-rc5")
-    url 'https://github.com/pebble/pebble-tool/archive/v4.0-rc5.zip'
-    sha256 '7905a3599c83d67ba4d0a95061e2d3b22b881e6ab90f7402a1a94e3a4c5ff40b'
+    version PebbleSdk::Version.new("4.0-rc6")
+    url 'https://github.com/pebble/pebble-tool/archive/v4.0-rc6.zip'
+    sha256 '0c2ea3d16cff814a183a682a73796a063d9905d8100faa7069226265738a54b5'
 
     depends_on 'freetype' => :recommended
     depends_on 'boost-python'
@@ -165,7 +165,8 @@ class PebbleSdk < Formula
     depends_on :python if MacOS.version <= :snow_leopard
 
     resource 'pypkjs' do
-      url 'https://github.com/pebble/pypkjs.git', :branch => "stable"
+      url 'https://s3-us-west-2.amazonaws.com/pebble-sdk-homebrew/pypkjs-1.0.tar.gz'
+      sha256 '7df90c7b36c3bffe40a7ee3d695b01aad933aa0db7bbf33e0a1acbacaa77b677'
     end
 
     resource 'backports.ssl-match-hostname' do
@@ -369,9 +370,7 @@ class PebbleSdk < Formula
       ENV.prepend_create_path "PYTHONPATH", libexec/"lib/python2.7/site-packages"
       ENV.prepend_create_path "PYTHONPATH", libexec/"vendor/lib/python2.7/site-packages"
 
-      resource('pypkjs').stage { (libexec/"pypkjs").install Dir["*"] }
-
-      %w[backports.ssl-match-hostname colorama enum34 freetype-py gevent gevent-websocket greenlet httplib2 libpebble2 pyasn1 pyasn1-modules oauth2client peewee progressbar2 pygeoip pypng pyqrcode pyserial python-dateutil requests rsa sh six websocket-client wheel wsgiref netaddr virtualenv].each do |r|
+      %w[pypkjs backports.ssl-match-hostname colorama enum34 freetype-py gevent gevent-websocket greenlet httplib2 libpebble2 pyasn1 pyasn1-modules oauth2client peewee progressbar2 pygeoip pypng pyqrcode pyserial python-dateutil requests rsa sh six websocket-client wheel wsgiref netaddr virtualenv].each do |r|
         resource(r).stage { system "python", *Language::Python.setup_install_args(libexec/"vendor") }
       end
 
@@ -381,7 +380,7 @@ class PebbleSdk < Formula
       bin.env_script_all_files(
         libexec/"bin",
         :PYTHONPATH => ENV["PYTHONPATH"],
-        :PHONESIM_PATH => libexec/"pypkjs/phonesim.py",
+        :PHONESIM_PATH => libexec/"vendor/bin/pypkjs",
         :PEBBLE_TOOLCHAIN_PATH => HOMEBREW_PREFIX/"Cellar/pebble-toolchain/2.0/arm-cs-tools/bin",
         :PEBBLE_IS_HOMEBREW => "1",
       )
