@@ -9,14 +9,9 @@ class PebbleSdk < Formula
 
   homepage 'https://developer.getpebble.com'
   stable do
-    version PebbleSdk::Version.new("4.0")
-    url 'https://github.com/pebble/pebble-tool/archive/v4.0.zip'
-    sha256 'd684f45559a9b1b33b3ea1c43ce97fae9ee07b4944a8b529aa0cd15cbb35421c'
-  end
-  devel do
-    version PebbleSdk::Version.new("4.0.1-rc2")
-    url 'https://github.com/pebble/pebble-tool/archive/v4.0.1-rc2.zip'
-    sha256 '360ea45d9e148d86b567441fb811e00835b78b93c7bf972964399bb1da68abee'
+    version PebbleSdk::Version.new("4.0.1")
+    url 'https://github.com/pebble/pebble-tool/archive/v4.0.1.zip'
+    sha256 'f73078f1591956ef5e99a15b967687c461b04153e2a09a5f7d9b0c78eec230d4'
   end
 
   depends_on 'freetype' => :recommended
