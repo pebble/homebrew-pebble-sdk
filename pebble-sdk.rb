@@ -14,9 +14,9 @@ class PebbleSdk < Formula
     sha256 'f73078f1591956ef5e99a15b967687c461b04153e2a09a5f7d9b0c78eec230d4'
   end
   devel do
-    version PebbleSdk::Version.new("4.1-rc2")
-    url 'https://github.com/pebble/pebble-tool/archive/v4.1-rc2.zip'
-    sha256 '042a4d13bbf655449d9d31664e228764e44de827fdb55aec95aab1e9bff7f82b'
+    version PebbleSdk::Version.new("4.1-rc3")
+    url 'https://github.com/pebble/pebble-tool/archive/v4.1-rc3.zip'
+    sha256 '58431218428ad129b1da7a4edb26024d6c284bb63c32828dc1434355e80b3908'
   end
 
   depends_on 'freetype' => :recommended
