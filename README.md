@@ -1,6 +1,6 @@
 # homebrew-pebble-sdk
 
-This is a [Homebrew](https://github.com/Homebrew/homebrew) tap for the [Pebble SDK](https://developer.getpebble.com/sdk).
+This is a [Homebrew](https://github.com/Homebrew/homebrew) tap for the [Pebble SDK](https://developer.pebble.com/sdk).
 It was made possible by the contributors listed below as well as the devoted Pebble & Homebrew communities.
 
 ## Installation
