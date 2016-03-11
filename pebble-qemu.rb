@@ -1,17 +1,15 @@
 class PebbleQemu < Formula
   homepage "https://github.com/pebble/qemu"
-  url "https://github.com/pebble/qemu/archive/v2.1.1-pebble1.zip"
-  sha256 "a7b1047492ab969725d90efa42a95ac22e69b271c7847a1a19606b3ea226f025"
+  url "https://github.com/pebble/qemu/archive/v2.5.0-pebble1.zip"
+  sha256 "511d654dea7901e0de848ef151e6033e13736c394dd278e00455937251ab1081"
   head "https://github.com/pebble/qemu.git"
-  version "2.1.1-pebble1"
-  revision 1
+  version "2.5.0-pebble1"
 
   bottle do
     root_url "http://pebble-sdk-homebrew.s3.amazonaws.com"
     cellar :any
-    revision 1
-    sha256 "b55b5940b9439c4ee0cb1484e7209d28d527d2d1e3dcb1e82a2ee5212d01a702" => :el_capitan
-    sha256 "258bff04da3487a0dbdc0f0f22b1ad0e99261ae6d76150e7a7d114268a64b0e7" => :yosemite
+    sha256 "1da010000c421fa80df70bb9d8b86d2ba143622faec4eb606a69b58172402039" => :yosemite
+    sha256 "027dd405c464e4ee53c198f2257a9ef0f9f6953b6166cc7da769f47cf3a7fae0" => :el_capitan
   end
 
   depends_on "pkg-config" => :build
@@ -31,7 +29,8 @@ class PebbleQemu < Formula
                           '--target-list=arm-softmmu',
                           "--extra-cflags=-DSTM32_UART_NO_BAUD_DELAY",
                           "--prefix=#{prefix}",
-                          "--disable-mouse"
+                          "--disable-mouse",
+                          "--disable-docs"
 
     system "make"
     # We only need the one binary.
