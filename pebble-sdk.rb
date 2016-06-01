@@ -7,7 +7,7 @@ class PebbleSdk < Formula
     end
   end
 
-  homepage 'https://developer.getpebble.com'
+  homepage 'https://developer.pebble.com'
   stable do
     version PebbleSdk::Version.new("4.2.1")
     url 'https://github.com/pebble/pebble-tool/archive/v4.2.1.zip'
@@ -205,7 +205,7 @@ class PebbleSdk < Formula
 
   def caveats; <<-EOS.undent
       
-      Documentation can be found online at https://developer.getpebble.com/docs
+      Documentation can be found online at https://developer.pebble.com/docs
 
       Examples can be found online at https://github.com/pebble-examples
 

@@ -9,7 +9,7 @@ class PebbleSdk < Formula
     end
   end
 
-  homepage 'https://developer.getpebble.com'
+  homepage 'https://developer.pebble.com'
   url "https://sdk.getpebble.com/download/__PEBBLE_SDK_VERSION__?source=homebrew"
   sha256 "__PEBBLE_SDK_SHA256__"
   version PebbleSdk::Version.new("__PEBBLE_SDK_VERSION__")
@@ -33,7 +33,7 @@ class PebbleSdk < Formula
     Curses.noecho
     Curses.init_screen    
     
-    Curses.addstr("To use the Pebble SDK, you must agree to the following:\n\nPEBBLE TERMS OF USE\nhttps://developer.getpebble.com/legal/terms-of-use\n\nPEBBLE DEVELOPER LICENSE\nhttps://developer.getpebble.com/legal/sdk-license\n\nDo you accept the Pebble Terms of Use and the Pebble Developer License (y/n)? ")
+    Curses.addstr("To use the Pebble SDK, you must agree to the following:\n\nPEBBLE TERMS OF USE\nhttps://developer.pebble.com/legal/terms-of-use\n\nPEBBLE DEVELOPER LICENSE\nhttps://developer.pebble.com/legal/sdk-license\n\nDo you accept the Pebble Terms of Use and the Pebble Developer License (y/n)? ")
 
     loop do
       case Curses.getch
@@ -91,7 +91,7 @@ class PebbleSdk < Formula
 
   def caveats; <<-EOS.undent
       
-      Documentation can be found online at https://developer.getpebble.com/docs or in
+      Documentation can be found online at https://developer.pebble.com/docs or in
       #{doc}
 
       Examples can be found online at https://github.com/pebble-examples
