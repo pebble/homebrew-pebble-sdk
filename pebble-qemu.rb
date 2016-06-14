@@ -1,15 +1,14 @@
 class PebbleQemu < Formula
   homepage "https://github.com/pebble/qemu"
-  url "https://github.com/pebble/qemu/archive/v2.5.0-pebble1.zip"
-  sha256 "511d654dea7901e0de848ef151e6033e13736c394dd278e00455937251ab1081"
+  url "https://github.com/pebble/qemu/archive/v2.5.0-pebble2.zip"
+  sha256 "c0fc5ad44c011a53a1c676cdd29e620f90838546f36f47b55cc8a2de9215b621"
   head "https://github.com/pebble/qemu.git"
-  version "2.5.0-pebble1"
+  version "2.5.0-pebble2"
 
   bottle do
     root_url "http://pebble-sdk-homebrew.s3.amazonaws.com"
     cellar :any
-    sha256 "1da010000c421fa80df70bb9d8b86d2ba143622faec4eb606a69b58172402039" => :yosemite
-    sha256 "027dd405c464e4ee53c198f2257a9ef0f9f6953b6166cc7da769f47cf3a7fae0" => :el_capitan
+    sha256 "91cc0a6234f9d9d0e6843e072756c78854cb2fae71330d054288c06f5bae4017" => :el_capitan
   end
 
   depends_on "pkg-config" => :build
