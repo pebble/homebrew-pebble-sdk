@@ -8,9 +8,36 @@ class PebbleSdk < Formula
   end
 
   homepage 'https://developer.pebble.com'
-  version PebbleSdk::Version.new("4.3")
-  url 'https://github.com/pebble/pebble-tool/archive/v4.3.zip'
-  sha256 '0f2370c416da981251c63bf9cd7d6236a747f540aa276f8491f84457e66b0e9b'
+  stable do
+    version PebbleSdk::Version.new("4.3")
+    url 'https://github.com/pebble/pebble-tool/archive/v4.3.zip'
+    sha256 '0f2370c416da981251c63bf9cd7d6236a747f540aa276f8491f84457e66b0e9b'
+
+    resource 'pypkjs' do
+      url 'https://s3-us-west-2.amazonaws.com/pebble-sdk-homebrew/pypkjs-1.0.1.tar.gz'
+      sha256 '7806b62c4be86268096dbc97c586d58e3c0c6eee598df30e7e91ed0e896e1df4'
+    end
+
+    resource 'libpebble2' do
+      url 'https://pypi.python.org/packages/source/l/libpebble2/libpebble2-0.0.18.tar.gz'
+      sha256 '25d6695bb3e4101a632e100bd61853536142430e4f8c7dea2a4b9a7f1ae8e6e9'
+    end
+  end
+  devel do
+    version PebbleSdk::Version.new("4.4-dp1")
+    url 'https://github.com/pebble/pebble-tool/archive/v4.4-dp1.zip'
+    sha256 '737412ca15d4588b4ea9469770f5163694501840335ed4b231fc5fb28ebfbd08'
+
+    resource 'pypkjs' do
+      url 'https://s3-us-west-2.amazonaws.com/pebble-sdk-homebrew/pypkjs-1.0.2.tar.gz'
+      sha256 'c4b6568c6c5627201573401af95d23d51c8d457e07585e258a9a80bb2e9962dd'
+    end
+
+    resource 'libpebble2' do
+      url 'https://pypi.python.org/packages/ae/37/9c78b70f6c26cbbc89ccdf24e18a9a7b42aa69cdc795b215e641cbfa90e1/libpebble2-0.0.19.tar.gz'
+      sha256 '4326ca6a277848e7865de07c7a42c57296f144162ec09133f5bfe61cc3381cee'
+    end
+  end
 
   depends_on 'node'
   depends_on 'freetype' => :recommended
@@ -21,11 +48,6 @@ class PebbleSdk < Formula
 
   depends_on :python if MacOS.version <= :snow_leopard
 
-  resource 'pypkjs' do
-    url 'https://s3-us-west-2.amazonaws.com/pebble-sdk-homebrew/pypkjs-1.0.1.tar.gz'
-    sha256 '7806b62c4be86268096dbc97c586d58e3c0c6eee598df30e7e91ed0e896e1df4'
-  end
-
   resource 'gevent' do
     url 'https://pypi.python.org/packages/source/g/gevent/gevent-1.1.1.tar.gz'
     sha256 '6ee5b9851b2acde08df7ab9b9a2903f58b4b0e555405c444f4b1dd16f71caeea'
@@ -34,11 +56,6 @@ class PebbleSdk < Formula
   resource 'greenlet' do
     url 'https://pypi.python.org/packages/source/g/greenlet/greenlet-0.4.9.zip'
     sha256 '58b2f3a2e7075c655616bf95e82868db4980f3bb6661db70ad02a51e4ddd2252'
-  end
-
-  resource 'libpebble2' do
-    url 'https://pypi.python.org/packages/source/l/libpebble2/libpebble2-0.0.18.tar.gz'
-    sha256 '25d6695bb3e4101a632e100bd61853536142430e4f8c7dea2a4b9a7f1ae8e6e9'
   end
 
   resource 'backports.ssl-match-hostname' do
