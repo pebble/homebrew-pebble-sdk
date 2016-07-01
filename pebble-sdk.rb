@@ -39,12 +39,15 @@ class PebbleSdk < Formula
     end
   end
 
-  depends_on 'node'
+  option "without-emulator", "Build without emulator support"
+  option "without-node", "Build without support for Pebble packages"
+
+  depends_on 'node' => :recommended
   depends_on 'freetype' => :recommended
-  depends_on 'boost-python'
 
   depends_on 'pebble-toolchain'
-  depends_on 'pebble-qemu'
+  depends_on 'boost-python' unless build.without? "emulator"
+  depends_on 'pebble-qemu' unless build.without? "emulator"
 
   depends_on :python if MacOS.version <= :snow_leopard
 
@@ -187,7 +190,10 @@ class PebbleSdk < Formula
     ENV.prepend_create_path "PYTHONPATH", libexec/"lib/python2.7/site-packages"
     ENV.prepend_create_path "PYTHONPATH", libexec/"vendor/lib/python2.7/site-packages"
 
-    %w[pypkjs backports.ssl-match-hostname colorama enum34 freetype-py gevent gevent-websocket greenlet httplib2 libpebble2 pyasn1 pyasn1-modules oauth2client peewee progressbar2 pygeoip pypng pyqrcode pyserial python-dateutil requests rsa sh six websocket-client wheel wsgiref netaddr virtualenv].each do |r|
+    deps = %w[pypkjs backports.ssl-match-hostname colorama enum34 freetype-py greenlet httplib2 libpebble2 pyasn1 pyasn1-modules oauth2client peewee progressbar2 pygeoip pypng pyqrcode pyserial python-dateutil requests rsa sh six websocket-client wheel wsgiref netaddr virtualenv]
+    # worth extracting these as they take time to compile
+    deps += %w[gevent gevent-websocket] unless build.without? "emulator"
+    deps.each do |r|
       resource(r).stage { system "python", *Language::Python.setup_install_args(libexec/"vendor") }
     end
 
