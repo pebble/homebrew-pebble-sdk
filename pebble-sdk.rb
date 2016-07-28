@@ -24,9 +24,9 @@ class PebbleSdk < Formula
     end
   end
   devel do
-    version PebbleSdk::Version.new("4.4-dp2")
-    url 'https://github.com/pebble/pebble-tool/archive/v4.4-dp2.zip'
-    sha256 '6340147ef060123aa742221b4c8703ea94600a56cf435c123175baf8a3394a8c'
+    version PebbleSdk::Version.new("4.4-rocky-demo")
+    url 'https://github.com/pebble/pebble-tool/archive/rocky-demo.zip'
+    sha256 '5c25785e1db02b02aee9542875223daf4c8b7e90084908a7e069f9db9c3c104d'
 
     resource 'pypkjs' do
       url 'https://s3-us-west-2.amazonaws.com/pebble-sdk-homebrew/pypkjs-1.0.3.tar.gz'
@@ -34,8 +34,8 @@ class PebbleSdk < Formula
     end
 
     resource 'libpebble2' do
-      url 'https://pypi.python.org/packages/55/5c/17f00e8282621817db29245cdab9ab8c68811a734adc6eee989d9a132a7d/libpebble2-0.0.20.tar.gz'
-      sha256 '392454716877e4c7e36f7e203cced2907a1241933fd0b086ee48ebc979a646e9'
+      url 'https://pypi.python.org/packages/87/2a/dbc3666d948ccc13da8a3a57847de290fa132e3eec408b0cce7179b9f029/libpebble2-0.0.23.tar.gz'
+      sha256 '473f8a5cc331fb956ba81616ef34bd42764713d3dfc71bfe59acaded002f4d4d'
     end
   end
 
