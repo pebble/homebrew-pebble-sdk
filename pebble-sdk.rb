@@ -29,8 +29,8 @@ class PebbleSdk < Formula
     sha256 '5c25785e1db02b02aee9542875223daf4c8b7e90084908a7e069f9db9c3c104d'
 
     resource 'pypkjs' do
-      url 'https://s3-us-west-2.amazonaws.com/pebble-sdk-homebrew/pypkjs-1.0.3.tar.gz'
-      sha256 '553b26faabbd31496cd36c7f3ba98c5867e070f5dc5d09311f401292717b3a9b'
+      url 'https://s3-us-west-2.amazonaws.com/pebble-sdk-homebrew/pypkjs-1.0.4.tar.gz'
+      sha256 'c4e33c9bfd9e6185b80310fd39fea612063eb79ce4f6396a8f5e1c84788e2203'
     end
 
     resource 'libpebble2' do
