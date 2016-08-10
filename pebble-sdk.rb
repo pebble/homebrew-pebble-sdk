@@ -38,6 +38,19 @@ class PebbleSdk < Formula
       sha256 '392454716877e4c7e36f7e203cced2907a1241933fd0b086ee48ebc979a646e9'
     end
   end
+  head do
+    url 'https://github.com/pebble/pebble-tool.git'
+
+    resource 'pypkjs' do
+      url 'https://s3-us-west-2.amazonaws.com/pebble-sdk-homebrew/pypkjs-1.0.4.tar.gz'
+      sha256 'c4e33c9bfd9e6185b80310fd39fea612063eb79ce4f6396a8f5e1c84788e2203'
+    end
+
+    resource 'libpebble2' do
+      url 'https://pypi.python.org/packages/87/2a/dbc3666d948ccc13da8a3a57847de290fa132e3eec408b0cce7179b9f029/libpebble2-0.0.23.tar.gz'
+      sha256 '473f8a5cc331fb956ba81616ef34bd42764713d3dfc71bfe59acaded002f4d4d'
+    end
+  end
 
   depends_on 'node'
   depends_on 'freetype' => :recommended
