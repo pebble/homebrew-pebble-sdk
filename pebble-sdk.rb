@@ -24,13 +24,13 @@ class PebbleSdk < Formula
     end
   end
   devel do
-    version PebbleSdk::Version.new("4.4-beta3")
-    url 'https://github.com/pebble/pebble-tool/archive/v4.4-beta3.zip'
-    sha256 '2275205c9d11ca8de665fee4ec9bbf33912154738a79d3b72e222fc5535f746e'
+    version PebbleSdk::Version.new("4.4-rc1")
+    url 'https://github.com/pebble/pebble-tool/archive/v4.4-rc1.zip'
+    sha256 '4b8ed28d2240ed80068b318728777791349a7dd5afeab2a8855474ffc1f60fa9'
 
     resource 'pypkjs' do
-      url 'https://s3-us-west-2.amazonaws.com/pebble-sdk-homebrew/pypkjs-1.0.5.tar.gz'
-      sha256 '0912333d6a1d4718a07fbf2f2d3460bac7cd36e12e167367b198de6fd88e13e5'
+      url 'https://s3-us-west-2.amazonaws.com/pebble-sdk-homebrew/pypkjs-1.0.6.tar.gz'
+      sha256 '43a05fb007a65cf81f68505e94679fc21d3d31e79e17df9a1bc086ad7da9b0f3'
     end
 
     resource 'libpebble2' do
@@ -42,8 +42,8 @@ class PebbleSdk < Formula
     url 'https://github.com/pebble/pebble-tool.git'
 
     resource 'pypkjs' do
-      url 'https://s3-us-west-2.amazonaws.com/pebble-sdk-homebrew/pypkjs-1.0.5.tar.gz'
-      sha256 '0912333d6a1d4718a07fbf2f2d3460bac7cd36e12e167367b198de6fd88e13e5'
+      url 'https://s3-us-west-2.amazonaws.com/pebble-sdk-homebrew/pypkjs-1.0.6.tar.gz'
+      sha256 '43a05fb007a65cf81f68505e94679fc21d3d31e79e17df9a1bc086ad7da9b0f3'
     end
 
     resource 'libpebble2' do
@@ -106,6 +106,11 @@ class PebbleSdk < Formula
     sha256 '74aa6c3beb90a4a7b9b8d0bc3cd60db34d45c5ee6136187bb9eabe85b4990e5e'
   end
 
+  resource 'packaging' do
+    url 'https://pypi.python.org/packages/28/ad/4e6601d14b11bb300719a8bb6247f6ef5861467a692523c978a4e9e3981a/packaging-16.7.tar.gz'
+    sha256 '2e246cde53917a320c4edb549b6b6ed0c80e22be835047bad814687c7345011e'
+  end
+
   resource 'peewee' do
     url 'https://pypi.python.org/packages/source/p/peewee/peewee-2.4.7.tar.gz'
     sha256 '8ad1c4fb202332a969da83a0af712bca96ed6e2a70ca1523ab3d2a2234ed47bd'
@@ -129,6 +134,11 @@ class PebbleSdk < Formula
   resource 'pygeoip' do
     url 'https://pypi.python.org/packages/source/p/pygeoip/pygeoip-0.3.2.tar.gz'
     sha256 'f22c4e00ddf1213e0fae36dc60b46ee7c25a6339941ec1a975539014c1f9a96d'
+  end
+
+  resource 'pyparsing' do
+    url 'https://pypi.python.org/packages/65/25/1bb68622ca70abc145ac9c9bcd0e837fccd2889d79cee641aa8604d18a11/pyparsing-2.1.8.tar.gz'
+    sha256 '03a4869b9f3493807ee1f1cb405e6d576a1a2ca4d81a982677c0c1ad6177c56b'
   end
 
   resource 'pypng' do
@@ -200,7 +210,7 @@ class PebbleSdk < Formula
     ENV.prepend_create_path "PYTHONPATH", libexec/"lib/python2.7/site-packages"
     ENV.prepend_create_path "PYTHONPATH", libexec/"vendor/lib/python2.7/site-packages"
 
-    %w[pypkjs backports.ssl-match-hostname colorama enum34 freetype-py gevent gevent-websocket greenlet httplib2 libpebble2 pyasn1 pyasn1-modules oauth2client peewee progressbar2 pygeoip pypng pyqrcode pyserial python-dateutil requests rsa sh six websocket-client wheel wsgiref netaddr virtualenv].each do |r|
+    %w[pypkjs backports.ssl-match-hostname colorama enum34 freetype-py gevent gevent-websocket greenlet httplib2 libpebble2 pyasn1 pyasn1-modules oauth2client packaging peewee progressbar2 pygeoip pyparsing pypng pyqrcode pyserial python-dateutil requests rsa sh six websocket-client wheel wsgiref netaddr virtualenv].each do |r|
       resource(r).stage { system "python", *Language::Python.setup_install_args(libexec/"vendor") }
     end
 
