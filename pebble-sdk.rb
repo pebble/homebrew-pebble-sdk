@@ -9,9 +9,9 @@ class PebbleSdk < Formula
 
   homepage 'https://developer.pebble.com'
   stable do
-    version PebbleSdk::Version.new("4.4")
-    url 'https://github.com/pebble/pebble-tool/archive/v4.4.zip'
-    sha256 '056a1088084d38edd5bde5dd7bdccea3b71966e44023cc2ff9a1b918084a49c3'
+    version PebbleSdk::Version.new("4.4.1")
+    url 'https://github.com/pebble/pebble-tool/archive/v4.4.1.zip'
+    sha256 '3a2fbf8545fa0f1dbe3bbb5d9f391bcde529566dc84df546bcbb2cc623540870'
   end
 
   head do
