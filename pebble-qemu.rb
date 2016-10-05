@@ -33,6 +33,7 @@ class PebbleQemu < Formula
   depends_on "libjpeg"
 
   def install
+    ENV.no_weak_imports
     system "./configure", "--disable-werror",
                           "--enable-debug",
                           '--target-list=arm-softmmu',
