@@ -16,6 +16,11 @@ class PebbleSdk < Formula
 
   head do
     url 'https://github.com/pebble/pebble-tool.git'
+
+    resource 'libpebble2' do
+      url 'https://pypi.python.org/packages/17/1c/0625cca1b3ef9e0c0b9cc2ab5bb5e496e0e43fd3d4f72d1b011158f81346/libpebble2-0.0.26.tar.gz'
+      sha256 '5feddc5923fa1cb264054823f004486e63ed80e22dc78528ac681e557b4fc69a'
+    end
   end
 
   depends_on 'node'
