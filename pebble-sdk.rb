@@ -17,6 +17,7 @@ class PebbleSdk < Formula
   bottle do
     root_url "http://pebble-sdk-homebrew.s3.amazonaws.com"
     cellar :any
+    sha256 "1eb9759c0a76adee4dc5e789a85204a74d495d6e350b0d458e6226f1f504c231" => :el_capitan
     sha256 "b3861c8ab568ca9613a5093e43f68ebd374bcfd42106ab73f18c1ad857586a1e" => :sierra
   end
 
