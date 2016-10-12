@@ -14,8 +14,29 @@ class PebbleSdk < Formula
     sha256 '3a2fbf8545fa0f1dbe3bbb5d9f391bcde529566dc84df546bcbb2cc623540870'
   end
 
+  devel do
+    version PebbleSdk::Version.new("4.5-rc1")
+    url 'https://github.com/pebble/pebble-tool/archive/v4.5-rc1.zip'
+    sha256 'af48a0480eb1a2a1286ab25868121fa49795402ec04a8d023f20664f570392f2'
+
+    resource 'pypkjs' do
+      url 'https://s3-us-west-2.amazonaws.com/pebble-sdk-homebrew/pypkjs-1.1.0.tar.gz'
+      sha256 '39dbc17e00993093bc1b3ff29d3079af380790824ff1cc60c69f2e8ae0dc89ac'
+    end
+
+    resource 'libpebble2' do
+      url 'https://pypi.python.org/packages/17/1c/0625cca1b3ef9e0c0b9cc2ab5bb5e496e0e43fd3d4f72d1b011158f81346/libpebble2-0.0.26.tar.gz'
+      sha256 '5feddc5923fa1cb264054823f004486e63ed80e22dc78528ac681e557b4fc69a'
+    end
+  end
+
   head do
     url 'https://github.com/pebble/pebble-tool.git'
+
+    resource 'pypkjs' do
+      url 'https://s3-us-west-2.amazonaws.com/pebble-sdk-homebrew/pypkjs-1.1.0.tar.gz'
+      sha256 '39dbc17e00993093bc1b3ff29d3079af380790824ff1cc60c69f2e8ae0dc89ac'
+    end
 
     resource 'libpebble2' do
       url 'https://pypi.python.org/packages/17/1c/0625cca1b3ef9e0c0b9cc2ab5bb5e496e0e43fd3d4f72d1b011158f81346/libpebble2-0.0.26.tar.gz'
