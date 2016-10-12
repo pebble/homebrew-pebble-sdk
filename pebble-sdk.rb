@@ -14,6 +14,12 @@ class PebbleSdk < Formula
     sha256 '3a2fbf8545fa0f1dbe3bbb5d9f391bcde529566dc84df546bcbb2cc623540870'
   end
 
+  bottle do
+    root_url "http://pebble-sdk-homebrew.s3.amazonaws.com"
+    cellar :any
+    sha256 "b3861c8ab568ca9613a5093e43f68ebd374bcfd42106ab73f18c1ad857586a1e" => :sierra
+  end
+
   devel do
     version PebbleSdk::Version.new("4.5-rc1")
     url 'https://github.com/pebble/pebble-tool/archive/v4.5-rc1.zip'
