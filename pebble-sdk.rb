@@ -9,46 +9,19 @@ class PebbleSdk < Formula
 
   homepage 'https://developer.pebble.com'
   stable do
-    version PebbleSdk::Version.new("4.4.1")
-    url 'https://github.com/pebble/pebble-tool/archive/v4.4.1.zip'
-    sha256 '3a2fbf8545fa0f1dbe3bbb5d9f391bcde529566dc84df546bcbb2cc623540870'
+    version PebbleSdk::Version.new("4.5")
+    url 'https://github.com/pebble/pebble-tool/archive/v4.5.zip'
+    sha256 '96f95fac6fe11ddb7fdaa359ffd04a508249b8782086a161cf30c3836753b401'
   end
 
   bottle do
     root_url "http://pebble-sdk-homebrew.s3.amazonaws.com"
     cellar :any
-    sha256 "1eb9759c0a76adee4dc5e789a85204a74d495d6e350b0d458e6226f1f504c231" => :el_capitan
-    sha256 "b3861c8ab568ca9613a5093e43f68ebd374bcfd42106ab73f18c1ad857586a1e" => :sierra
-  end
-
-  devel do
-    version PebbleSdk::Version.new("4.5-rc1")
-    url 'https://github.com/pebble/pebble-tool/archive/v4.5-rc1.zip'
-    sha256 'af48a0480eb1a2a1286ab25868121fa49795402ec04a8d023f20664f570392f2'
-
-    resource 'pypkjs' do
-      url 'https://s3-us-west-2.amazonaws.com/pebble-sdk-homebrew/pypkjs-1.1.0.tar.gz'
-      sha256 '39dbc17e00993093bc1b3ff29d3079af380790824ff1cc60c69f2e8ae0dc89ac'
-    end
-
-    resource 'libpebble2' do
-      url 'https://pypi.python.org/packages/17/1c/0625cca1b3ef9e0c0b9cc2ab5bb5e496e0e43fd3d4f72d1b011158f81346/libpebble2-0.0.26.tar.gz'
-      sha256 '5feddc5923fa1cb264054823f004486e63ed80e22dc78528ac681e557b4fc69a'
-    end
+    sha256 "f14ce854035de57dbcc9f8ab390071491aee81a37456cf325b28ac5a80020989" => :sierra
   end
 
   head do
     url 'https://github.com/pebble/pebble-tool.git'
-
-    resource 'pypkjs' do
-      url 'https://s3-us-west-2.amazonaws.com/pebble-sdk-homebrew/pypkjs-1.1.0.tar.gz'
-      sha256 '39dbc17e00993093bc1b3ff29d3079af380790824ff1cc60c69f2e8ae0dc89ac'
-    end
-
-    resource 'libpebble2' do
-      url 'https://pypi.python.org/packages/17/1c/0625cca1b3ef9e0c0b9cc2ab5bb5e496e0e43fd3d4f72d1b011158f81346/libpebble2-0.0.26.tar.gz'
-      sha256 '5feddc5923fa1cb264054823f004486e63ed80e22dc78528ac681e557b4fc69a'
-    end
   end
 
   depends_on 'node'
@@ -61,13 +34,13 @@ class PebbleSdk < Formula
   depends_on :python if MacOS.version <= :snow_leopard
 
   resource 'pypkjs' do
-    url 'https://s3-us-west-2.amazonaws.com/pebble-sdk-homebrew/pypkjs-1.0.6.tar.gz'
-    sha256 '43a05fb007a65cf81f68505e94679fc21d3d31e79e17df9a1bc086ad7da9b0f3'
+    url 'https://s3-us-west-2.amazonaws.com/pebble-sdk-homebrew/pypkjs-1.1.0.tar.gz'
+    sha256 '39dbc17e00993093bc1b3ff29d3079af380790824ff1cc60c69f2e8ae0dc89ac'
   end
 
   resource 'libpebble2' do
-    url 'https://pypi.python.org/packages/87/2a/dbc3666d948ccc13da8a3a57847de290fa132e3eec408b0cce7179b9f029/libpebble2-0.0.23.tar.gz'
-    sha256 '473f8a5cc331fb956ba81616ef34bd42764713d3dfc71bfe59acaded002f4d4d'
+    url 'https://pypi.python.org/packages/17/1c/0625cca1b3ef9e0c0b9cc2ab5bb5e496e0e43fd3d4f72d1b011158f81346/libpebble2-0.0.26.tar.gz'
+    sha256 '5feddc5923fa1cb264054823f004486e63ed80e22dc78528ac681e557b4fc69a'
   end
 
   resource 'gevent' do
